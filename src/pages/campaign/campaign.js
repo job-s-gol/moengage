@@ -39,14 +39,17 @@ const Campaign = ({
 
   const ioCallback = useCallback(
     (entries, observer) => {
+      debugger;
+      console.log("entries", entries);
+      // console.log("")
       if (entries.length === 2 && entries[1].isIntersecting && !cend.current) {
         // process only the bottom one
         // this happens only when screen is too big
+        observer.disconnect();
         searchCampaign({
           searchString: searchText.current,
           page: cpage.current + 1,
         });
-        observer.disconnect();
       } else if (entries.length === 1 && entries[0].isIntersecting) {
         // process intersected one
         const subtractor = MAX_PAGE_SIZE / PAGE_SIZE;
@@ -89,6 +92,7 @@ const Campaign = ({
   }, [getCampaignList, ioCallback]);
 
   useEffect(() => {
+    debugger;
     if (campaignFirst.current && campaignLast.current) {
       io.current.observe(campaignFirst.current);
       io.current.observe(campaignLast.current);

@@ -28,7 +28,7 @@
 		flex-direction: column;
 		.campaign-list-item {
 			display: flex;
-			height: 75px;
+			min-height: 70px;
 			flex: 1;
 			flex-direction: row;
 			padding: 10px;
