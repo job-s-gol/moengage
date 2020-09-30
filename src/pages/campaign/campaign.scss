@@ -1,0 +1,43 @@
+.campaign-page{
+	display: flex;
+	flex-direction: column;
+	background-color: #191919;
+	top: 90px;
+	position: relative;
+
+	.campaign-list-header {
+		display: flex;
+		height: 40px;
+		position: fixed;
+		width: 100%;
+		flex: 1;
+		flex-direction: row;
+		top: 50px;
+		padding: 5px;
+		background-color: #191919;
+		border-bottom: solid 2px white;
+
+		p {
+			width: 33%;
+			font-weight: 900;
+		}
+	}
+
+	.campaign-list{
+		display: flex;
+		flex-direction: column;
+		.campaign-list-item {
+			display: flex;
+			height: 75px;
+			flex: 1;
+			flex-direction: row;
+			padding: 10px;
+			border-bottom: solid 1px #c0c0c0;
+
+			p {
+				width: 33%;
+			}
+		}
+	}
+	
+}
