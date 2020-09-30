@@ -51,7 +51,6 @@ export const campaignReducer = createReducer(initialState, {
     state.end = false;
   },
   [SEARCH_CAMPAIGN]: (state, { payload }) => {
-    debugger;
     let list;
 
     if (payload.searchString === state.searchString) {

@@ -36,12 +36,15 @@ const Campaign = ({
   const cend = useRef(end);
   const loadingWhere = useRef("bottom");
   const html = useRef(null);
+  const ignoreScroll = useRef(false);
 
   const ioCallback = useCallback(
     (entries, observer) => {
-      debugger;
-      console.log("entries", entries);
-      // console.log("")
+      if (ignoreScroll.current === true) {
+        ignoreScroll.current = false;
+        return;
+      }
+
       if (entries.length === 2 && entries[1].isIntersecting && !cend.current) {
         // process only the bottom one
         // this happens only when screen is too big
@@ -92,13 +95,13 @@ const Campaign = ({
   }, [getCampaignList, ioCallback]);
 
   useEffect(() => {
-    debugger;
     if (campaignFirst.current && campaignLast.current) {
       io.current.observe(campaignFirst.current);
       io.current.observe(campaignLast.current);
     }
     if (loadingWhere.current === "top") {
       html.current.scrollTop = 750;
+      ignoreScroll.current = true;
     }
   }, [displayList]);
 
